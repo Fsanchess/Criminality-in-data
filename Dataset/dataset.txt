@@ -1,1 +1,7 @@
-
+EDUCATION DATASET
+AUS : Australia
+BRA : Brazil
+IND : India
+SWE : Sweden
+USA : United States
+ZAF : South Africa
