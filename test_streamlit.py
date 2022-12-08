@@ -5,7 +5,7 @@ import plotly.figure_factory as ff
 import matplotlib
 import matplotlib.pyplot as plt
 
-st.title('Evolution de la criminalité par pays selon différents critères sociaux')
+st.title('Evolution de la criminalité par pays selon différents critères sociaux de 2000 à 2020')
 
 lis = ['AUS','BRA','IND','SWE','USA','ZAF']
 lis2 = ['AU','BR','IN','SE','US','ZA']
