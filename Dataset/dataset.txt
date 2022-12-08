@@ -1,4 +1,5 @@
 EDUCATION DATASET
+Cet indicateur porte sur le niveau d'éducation des adultes tel que défini par le plus haut niveau d'éducation atteint par la population âgée de 25 à 64 ans. Il existe trois niveaux : inférieur au deuxième cycle du secondaire, deuxième cycle du secondaire et supérieur. L'enseignement secondaire supérieur suit généralement l'achèvement de l'enseignement secondaire inférieur. Le premier cycle de l'enseignement secondaire complète l'offre d'enseignement de base, généralement plus disciplinaire et avec des enseignants plus spécialisés. L'indicateur est mesuré en pourcentage de la population du même âge; pour le tertiaire et le deuxième cycle du secondaire, les données sont également ventilées par sexe.
 AUS : Australia
 BRA : Brazil
 IND : India
