@@ -5,3 +5,7 @@ IND : India
 SWE : Sweden
 USA : United States
 ZAF : South Africa
+
+below upper secondary : avant lycée
+upper secondary : niveau lycée-bac
+tertiary : enseignement supérieur
