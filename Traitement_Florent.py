@@ -10,5 +10,3 @@ crimes = crimes[(crimes.Indicator == 'Victims of intentional homicide') & (crime
 print(crimes)
 
 crimes.to_csv('dataset_clean/homicide_clean.csv', index=False)
-
-
