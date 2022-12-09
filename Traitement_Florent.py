@@ -1,12 +1,14 @@
 import pandas as pd
 
-path = 'C://Users/flore/OneDrive/Documents/GitHub/Criminality-in-data/Dataset/firearms_trafficking.xlsx'
-df = pd.read_excel(path)
-df.columns = df.iloc[1]
-df = df[2:]
-df = df[(df.Year >= 2000) & (df.Year <= 2020)]
-guns = df[(df.Country == 'India') |
-                (df.Country == 'United States of America') | (df.Country == 'Brazil')]
-guns = guns.reset_index()
+path = 'Dataset/homicide_intentional_.xlsx'
+crimes = pd.read_excel(path)
+crimes.columns = crimes.iloc[1]
+crimes = crimes[2:]
+crimes = crimes[(crimes.Year >= 2000) & (crimes.Year <= 2020)]
+crimes = crimes[(crimes.Indicator == 'Victims of intentional homicide') & (crimes.Dimension == 'Total')]
 
-print(guns)
+print(crimes)
+
+crimes.to_csv('dataset_clean/homicide_clean.csv', index=False)
+
+
