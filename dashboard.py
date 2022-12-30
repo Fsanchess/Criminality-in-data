@@ -55,11 +55,26 @@ choropleth_map.update_layout(
 plt.figure(figsize=(7,3))
 
 # Display choropleth map
-title_choropleth_map = st.subheader("Nombre de victimes d'homicide volontaire par pays en 2010 (pour 100 000 habitants)")
+title_choropleth_map = st.header("Nombre de victimes d'homicide volontaire par pays en 2010 (pour 100 000 habitants)")
 plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
 
 
-st.markdown("<p style= color: dark grey;'>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></p>", unsafe_allow_html=True)
+
+# Chart with homicide dataset
+criminalite = px.scatter(pd1_homicide, x="Country", y="VALUE",marginal_x= False, marginal_y="violin",
+                  labels={
+                     "VALUE": "Nb crimes pour 100 000 habitants",
+                     "Country": "Pays"},
+                  color_continuous_scale=["lightyellow", "orange", "red"]
+                 )
+
+# Display charts with unemployment dataset
+title_unemployment_chart = st.header("Criminalité par pays")
+plot_unemployment_chart =st.plotly_chart(criminalite, use_container_width=True)
+
+
+
+st.markdown("<p style= color: dark grey;'><br><br>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></p>", unsafe_allow_html=True)
 
 
 
@@ -71,12 +86,12 @@ homicide_chart = px.line(pd2_homicide, x="Year", y="VALUE", color="Iso3_code", m
                          category_orders={"Iso3_code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
                             "Year" : "Année",
-                            "VALUE" : "Taux de criminalité",
+                            "VALUE" : "Nb crimes pour 100 000 habitants",
                             "Iso3_code" : "Pays"
                          })
 
 # Display chart with homicide dataset
-#title_homicide_chart = st.subheader('Evolution du taux de criminalité')
+#title_homicide_chart = st.header('Evolution du taux de criminalité')
 #plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
 
 
@@ -94,18 +109,18 @@ prison_chart = px.line(pd_prison, x="Year", y="VALUE", color="Iso3_code", marker
                          })
 
 # Display charts with prison dataset
-#title_prison_chart = st.subheader("Evolution du nombre de prisonniers (pour 100 000 habitants)")
+#title_prison_chart = st.header("Evolution du nombre de prisonniers (pour 100 000 habitants)")
 #plot_prison_chart =st.plotly_chart(prison_chart, use_container_width=True)
 
 
 col1, col2 = st.columns(2)
 
 with col1:
-   title_homicide_chart = st.subheader('Evolution du taux de criminalité')
+   st.header('Evolution du nombre de crimes')
    st.plotly_chart(homicide_chart, use_container_width=True)
 with col2:
-   title_prison_chart = st.subheader("Evolution du nombre de prisonniers")
-   plot_prison_chart =st.plotly_chart(prison_chart, use_container_width=True)
+   st.header("Evolution du nombre de prisonniers")
+   st.plotly_chart(prison_chart, use_container_width=True)
 
 
 
@@ -133,7 +148,7 @@ below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Ta
                          })
 
 # Display charts with education dataset
-title_education_chart = st.subheader("Evolution du taux de diplômés d'étude supérieur VS inférieur au niveau bac parmi la population 25-64 ans")
+title_education_chart = st.header("Evolution du taux de diplômés d'étude supérieur VS inférieur au niveau bac parmi la population 25-64 ans")
 
 col_education_1, col_education_2 = st.columns(2)
 
@@ -158,5 +173,5 @@ unemployment_chart = px.line(pd_unemployment, x="Year", y="Value", color="Countr
                          })
 
 # Display charts with unemployment dataset
-title_unemployment_chart = st.subheader("Evolution du taux de chômage")
+title_unemployment_chart = st.header("Evolution du taux de chômage")
 plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
