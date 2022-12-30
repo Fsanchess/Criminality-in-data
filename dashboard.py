@@ -80,6 +80,26 @@ title_homicide_chart = st.subheader('Evolution du taux de criminalité')
 plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
 
 
+# Charts with prison dataset
+prison_path = 'dataset_clean/prisons.csv'
+prison_dataset = pd.read_csv(prison_path, sep = ';', encoding = "ISO-8859-1")
+pd_prison = prison_dataset[prison_dataset['Iso3_code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
+
+prison_chart = px.line(pd_prison, x="Year", y="VALUE", color="Iso3_code", markers=True,
+                         category_orders={"Iso3_code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
+                         labels={
+                            "Year" : "Année",
+                            "VALUE" : "Nb prisonniers pour 100 000 habitants",
+                            "Iso3_code" : "Pays"
+                         })
+
+# Display charts with prison dataset
+title_prison_chart = st.subheader("Evolution du nombre de prisonniers (pour 100 000 habitants)")
+plot_prison_chart =st.plotly_chart(prison_chart, use_container_width=True)
+
+
+
+
 
 # Charts with education dataset
 tertiary_path = 'Dataset/education_tertiary_25-64.csv'
@@ -119,9 +139,9 @@ with col2:
 # Charts with unemployment dataset
 unemployment_path = 'dataset_clean/unemployment_clean.csv'
 unemployment_dataset = pd.read_csv(unemployment_path, sep = ';')
-pd_dataset = unemployment_dataset[unemployment_dataset['Country Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
+pd_unemployment = unemployment_dataset[unemployment_dataset['Country Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
 
-unemployment_chart = px.line(pd_dataset, x="Year", y="Value", color="Country Code", title="Taux de chômage", markers=True,
+unemployment_chart = px.line(pd_unemployment, x="Year", y="Value", color="Country Code", markers=True,
                          category_orders={"Country Code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
                             "Year" : "Année",
@@ -129,6 +149,6 @@ unemployment_chart = px.line(pd_dataset, x="Year", y="Value", color="Country Cod
                             "Country Code" : "Pays"
                          })
 
-# Display charts with education dataset
+# Display charts with unemployment dataset
 title_unemployment_chart = st.subheader("Evolution du taux de chômage")
 plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
