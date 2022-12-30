@@ -62,6 +62,25 @@ plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
 st.markdown("<p style= color: dark grey;'>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul></p>", unsafe_allow_html=True)
 
 
+
+# Chart with homicide dataset
+pd2_homicide = homicide_dataset[homicide_dataset['Iso3_code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF'])]
+pd2_homicide = pd2_homicide.loc[pd2_homicide['Unit of measurement'] == 'Rate per 100,000 population']
+pd2_homicide = pd2_homicide[pd2_homicide['Year'].isin([2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020])]
+homicide_chart = px.line(pd2_homicide, x="Year", y="VALUE", color="Iso3_code", markers=True,
+                         category_orders={"Iso3_code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
+                         labels={
+                            "Year" : "Année",
+                            "VALUE" : "Taux de criminalité",
+                            "Iso3_code" : "Pays"
+                         })
+
+# Display chart with homicide dataset
+title_homicide_chart = st.subheader('Evolution du taux de criminalité')
+plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
+
+
+
 # Charts with education dataset
 tertiary_path = 'Dataset/education_tertiary_25-64.csv'
 tertiary_dataset = pd.read_csv(tertiary_path, sep = ',')
@@ -97,18 +116,19 @@ with col2:
 
 
 
-# Chart with homicide dataset
-pd2_homicide = homicide_dataset[homicide_dataset['Iso3_code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF'])]
-pd2_homicide = pd2_homicide.loc[pd2_homicide['Unit of measurement'] == 'Rate per 100,000 population']
-pd2_homicide = pd2_homicide[pd2_homicide['Year'].isin([2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020])]
-homicide_chart = px.line(pd2_homicide, x="Year", y="VALUE", color="Iso3_code", markers=True,
-                         category_orders={"Iso3_code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
+# Charts with unemployment dataset
+unemployment_path = 'dataset_clean/unemployment_clean.csv'
+unemployment_dataset = pd.read_csv(unemployment_path, sep = ';')
+pd_dataset = unemployment_dataset[unemployment_dataset['Country Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
+
+unemployment_chart = px.line(pd_dataset, x="Year", y="Value", color="Country Code", title="Taux de chômage", markers=True,
+                         category_orders={"Country Code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
                             "Year" : "Année",
-                            "VALUE" : "Taux de criminalité",
-                            "Iso3_code" : "Pays"
+                            "Value" : "Taux de chômage",
+                            "Country Code" : "Pays"
                          })
 
-# Display chart with homicide dataset
-title_homicide_chart = st.subheader('Evolution du taux de criminalité')
-plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
+# Display charts with education dataset
+title_unemployment_chart = st.subheader("Evolution du taux de chômage")
+plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
