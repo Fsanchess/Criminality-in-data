@@ -59,7 +59,7 @@ title_choropleth_map = st.subheader("Nombre de victimes d'homicide volontaire pa
 plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
 
 
-st.markdown("<p style= color: dark grey;'>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey;'>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></p>", unsafe_allow_html=True)
 
 
 
@@ -76,8 +76,8 @@ homicide_chart = px.line(pd2_homicide, x="Year", y="VALUE", color="Iso3_code", m
                          })
 
 # Display chart with homicide dataset
-title_homicide_chart = st.subheader('Evolution du taux de criminalité')
-plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
+#title_homicide_chart = st.subheader('Evolution du taux de criminalité')
+#plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
 
 
 # Charts with prison dataset
@@ -94,10 +94,18 @@ prison_chart = px.line(pd_prison, x="Year", y="VALUE", color="Iso3_code", marker
                          })
 
 # Display charts with prison dataset
-title_prison_chart = st.subheader("Evolution du nombre de prisonniers (pour 100 000 habitants)")
-plot_prison_chart =st.plotly_chart(prison_chart, use_container_width=True)
+#title_prison_chart = st.subheader("Evolution du nombre de prisonniers (pour 100 000 habitants)")
+#plot_prison_chart =st.plotly_chart(prison_chart, use_container_width=True)
 
 
+col1, col2 = st.columns(2)
+
+with col1:
+   title_homicide_chart = st.subheader('Evolution du taux de criminalité')
+   st.plotly_chart(homicide_chart, use_container_width=True)
+with col2:
+   title_prison_chart = st.subheader("Evolution du nombre de prisonniers")
+   plot_prison_chart =st.plotly_chart(prison_chart, use_container_width=True)
 
 
 
@@ -127,11 +135,11 @@ below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Ta
 # Display charts with education dataset
 title_education_chart = st.subheader("Evolution du taux de diplômés d'étude supérieur VS inférieur au niveau bac parmi la population 25-64 ans")
 
-col1, col2 = st.columns(2)
+col_education_1, col_education_2 = st.columns(2)
 
-with col1:
+with col_education_1:
    st.plotly_chart(tertiary_chart, use_container_width=True)
-with col2:
+with col_education_2:
    st.plotly_chart(below_chart, use_container_width=True)
 
 
