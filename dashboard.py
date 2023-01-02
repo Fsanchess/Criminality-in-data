@@ -79,8 +79,10 @@ title_unemployment_chart = st.header("Nombre de victimes d'homicide volontaire p
 plot_unemployment_chart =st.plotly_chart(criminalite, use_container_width=True)
 
 
+st.markdown("<p style= color: dark grey><font size='4'><br><br>Les nombres de crimes pour 100 000 habitants varient considérablement d'un pays à l'autre. Bien qu'il y ait rarement une raison claire pour laquelle des homicides volontaires sont commis, de nombreux facteurs peuvent affecter les taux de criminalité.</font></p>", unsafe_allow_html=True)
 
-st.markdown("<p style= color: dark grey><font size='4'><br><br>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></font></p>", unsafe_allow_html=True)
+
+st.markdown("<p style= color: dark grey><font size='4'><br>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></font></p>", unsafe_allow_html=True)
 
 
 
