@@ -3,6 +3,7 @@ import geopandas as gpd
 import mapclassify as mc
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib import rc
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -167,15 +168,39 @@ with col_education_2:
 unemployment_path = 'dataset_clean/unemployment_clean.csv'
 unemployment_dataset = pd.read_csv(unemployment_path, sep = ';')
 pd_unemployment = unemployment_dataset[unemployment_dataset['Country Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
+Year=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+unemployment_chart = px.bar(pd_unemployment,
+             x=Year,
+             y=[pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'AUS'],
+                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'BRA'],
+                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'IND'],
+                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'SWE'],
+                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'USA'],
+                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'ZAF']],
+             title="Evolution du taux de chômage",
+             labels={"variable": "Pays"},
+             )
 
-unemployment_chart = px.line(pd_unemployment, x="Year", y="Value", color="Country Code", markers=True,
-                         title = 'Chômage par pays',
-                         category_orders={"Country Code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
-                         labels={
-                            "Year" : "Année",
-                            "Value" : "Taux de chômage",
-                            "Country Code" : "Pays"
-                         })
+# Change the bar mode
+newnames = {'wide_variable_0':'AUS',
+            'wide_variable_1': 'BRA',
+           'wide_variable_2': 'IND',
+           'wide_variable_3': 'SWE',
+           'wide_variable_4': 'USA',
+           'wide_variable_5': 'ZAF'}
+unemployment_chart.for_each_trace(lambda t: t.update(name = newnames[t.name],
+                                      legendgroup = newnames[t.name],
+                                      hovertemplate = t.hovertemplate.replace(t.name, newnames[t.name])
+                                     )
+                  )
+unemployment_chart.update_layout(
+    yaxis=dict(
+        title_text="Taux de chômages",
+        titlefont=dict(size=15)),
+    xaxis=dict(
+        title_text="Année",
+        titlefont=dict(size=15))
+)
 
 # Display charts with unemployment dataset
 title_unemployment_chart = st.header("Evolution du taux de chômage")
