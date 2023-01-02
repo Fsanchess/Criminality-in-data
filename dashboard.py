@@ -61,6 +61,9 @@ title_choropleth_map = st.header("Map avec nombre de victimes d'homicide volonta
 plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
 
 
+# Definition 'Number of victims of intentional homicide'
+st.markdown("<p style= color: dark grey><font size='4'>L'indicateur est défini comme le nombre total de victimes d'homicide intentionnel divisé par la population totale, exprimé pour 100 000 habitants.<br>L'homicide intentionnel est défini comme la mort illégale infligée à une personne avec l'intention de causer la mort ou des blessures graves (Source : Classification internationale des crimes à des fins statistiques, CIEC 2015).<br>La population fait référence à la population résidente totale dans un pays donné au cours d'une année donnée.<br><br></font></p>", unsafe_allow_html=True)
+
 
 # Chart with homicide dataset
 criminalite = px.scatter(pd1_homicide, x="Country", y="VALUE",marginal_x= False, marginal_y="violin",
@@ -205,3 +208,11 @@ unemployment_chart.update_layout(
 # Display charts with unemployment dataset
 title_unemployment_chart = st.header("Evolution du taux de chômage")
 plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
+
+
+# Sources
+st.markdown("<p style= color: dark grey><font size='5'>Sources</font></p>", unsafe_allow_html=True)
+st.write("1. [Nombre de victimes d'homicide volontaire](https://dataunodc.un.org/dp-intentional-homicide-victims)")
+st.write("2. [Nombre de personnes détenues](https://dataunodc.un.org/dp-prisons-persons-held)")
+st.write("3. [Niveau d'éducation des adultes](https://data.oecd.org/eduatt/adult-education-level.htm#:~:text=There%20are%20three%20levels%3A%20below,and%20with%20more%20specialised%20teachers)")
+st.write("4. [Chômage, total (% de la population active totale)](https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS)")
