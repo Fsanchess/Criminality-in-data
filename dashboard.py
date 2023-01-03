@@ -208,7 +208,7 @@ plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width
 
 
 #------------------ remplissage prison 
-df_prison = pd.read_excel("data_cts_prisons_and_prisoners.xlsx")
+df_prison = pd.read_excel('dataset_clean/data_cts_prisons_and_prisoners.xlsx')
 df_prison = df_prison[(df_prison.Iso3_code == "AUS") | (df_prison.Iso3_code == "BRA") | (df_prison.Iso3_code == "IND") | (df_prison.Iso3_code == "USA") | (df_prison.Iso3_code == "ZAF") | (df_prison.Iso3_code == "SWE")]
 
 df_prison = df_prison[(df_prison.Unit == "Rate per 100,000 population")]
@@ -216,5 +216,5 @@ df_prison = df_prison[(df_prison.Dimension == "Total")]
 df_prison = df_prison[(df_prison.Category == "Total")]
 df_prison = df_prison[(df_prison.Indicator == "Persons held")]
 
-fig = px.line(df_prison, x="Year", y="VALUE", color='Country')
-fig.show()
+fig_prison = px.line(df_prison, x="Year", y="VALUE", color='Country')
+fig_prison.show()
