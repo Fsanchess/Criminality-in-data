@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.figure_factory as ff
+import plotly.graph_objects as go
 import streamlit as st
 
 
@@ -107,6 +108,46 @@ homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"]
                          )
 
+buttons=list(
+            [dict(label = 'All',
+                  method = 'update',
+                  args = [{'visible': [True, True, True, True, True, True]},
+                          {'title': 'All',
+                           'showlegend':True}]),
+             dict(label = 'AUS',
+                  method = 'update',
+                  args = [{'visible': [True, False, False, False, False, False]}, # the index of True aligns with the indices of plot traces
+                          {'title': 'AUS',
+                           'showlegend':True}]),
+             dict(label = 'BRA',
+                  method = 'update',
+                  args = [{'visible': [False, True, False, False, False, False]},
+                          {'title': 'BRA',
+                           'showlegend':True}]),
+             dict(label = 'IND',
+                  method = 'update',
+                  args = [{'visible': [False, False, True, False, False, False]},
+                          {'title': 'IND',
+                           'showlegend':True}]),
+             dict(label = 'SWE',
+                  method = 'update',
+                  args = [{'visible': [False, False, False, True, False, False]},
+                          {'title': 'SWE',
+                           'showlegend':True}]),
+             dict(label = 'USA',
+                  method = 'update',
+                  args = [{'visible': [False, False, False, False, True, False]},
+                          {'title': 'USA',
+                           'showlegend':True}]),
+             dict(label = 'ZAF',
+                  method = 'update',
+                  args = [{'visible': [False, False, False, False, False, True]},
+                          {'title': 'ZAF',
+                           'showlegend':True}]),
+            ])
+
+homicide_chart.update_layout(updatemenus=[go.layout.Updatemenu(active=0,buttons=buttons)])
+
 # Display chart with homicide dataset
 title_homicide_chart = st.header("Evolution du nombre de victimes d'homicide volontaire")
 plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
@@ -129,6 +170,8 @@ unemployment_chart = px.line(pd_unemployment, x="Year", y="Value", color="Countr
                          },
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 
+unemployment_chart.update_layout(updatemenus=[go.layout.Updatemenu(active=0,buttons=buttons)])
+
 # Display charts with unemployment dataset
 #title_unemployment_chart = st.header("Evolution du taux de chômage")
 #plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
@@ -149,6 +192,8 @@ prison_chart = px.line(pd_prison, x="Year", y="VALUE", color="Iso3_code", marker
                             "Iso3_code" : "Pays"
                          },
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
+
+prison_chart.update_layout(updatemenus=[go.layout.Updatemenu(active=0,buttons=buttons)])
 
 # Display charts with prison dataset
 #title_prison_chart = st.header("Evolution du nombre de prisonniers (pour 100 000 habitants)")
@@ -184,6 +229,9 @@ tertiary_chart = px.line(pd_tertiary, x="TIME", y="Value", color="LOCATION", tit
                             "LOCATION" : "Pays"
                          },
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
+
+tertiary_chart.update_layout(updatemenus=[go.layout.Updatemenu(active=0,buttons=buttons)])
+                         
 below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Taux de diplômés inférieurs au niveau bac", markers=True,
                          category_orders={"LOCATION": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
@@ -192,6 +240,8 @@ below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Ta
                             "LOCATION" : "Pays"
                          },
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
+
+below_chart.update_layout(updatemenus=[go.layout.Updatemenu(active=0,buttons=buttons)])
 
 # Display charts with education dataset
 title_education_chart = st.header("Evolution du taux de diplômés d'étude supérieure VS inférieure au niveau bac parmi la population 25-64 ans")
@@ -222,6 +272,8 @@ happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantri
                             "Code" : "Pays"
                          },
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
+
+happiness_chart.update_layout(updatemenus=[go.layout.Updatemenu(active=0,buttons=buttons)])
 
 # Display charts with happiness dataset
 title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
