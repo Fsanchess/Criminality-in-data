@@ -111,6 +111,8 @@ homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
 title_homicide_chart = st.header("Evolution du nombre de victimes d'homicide volontaire")
 plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
 
+st.markdown("<p style= color: dark grey><font size='4'><br>Parmi les 6 pays choisis pour l'analyse, l'Afrique du Sud et le Brésil comptent le plus criminalité entre 2000 et 2020, avec une moyenne respective de 36.9 et 26.8 homicides volontaires pour 100 000 habitants. Suivis par les Etats-Unis, l'Inde, l'Australie et la Suède avec une moyenne respective de 5.3, 3.7, 1.2 et 1.02 homicides volontaires pour 100 000 habitants.</font></p>", unsafe_allow_html=True)
+
 
 
 # Charts with unemployment dataset
@@ -158,11 +160,11 @@ col1, col2 = st.columns(2)
 with col1:
    st.header("Evolution du taux de chômage")
    st.plotly_chart(unemployment_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le taux de chômage par pays, cela permet de constater que l’Afrique du Sud a un fort taux de chômage et que le taux de chômage a fortement augmenter au Brésil depuis 2015</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le taux de chômage par pays, cela permet de constater que l'Afrique du Sud a un fort taux de chômage (27,25% en moyenne) et que le taux de chômage a fortement augmenté au Brésil depuis 2015</font></p>", unsafe_allow_html=True)
 with col2:
    st.header("Evolution du nombre de prisonniers")
    st.plotly_chart(prison_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le nombre d’habitants en prison pour 100.000, nous pouvons constater que les états-unis ont le plus haut taux de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le nombre d'habitants en prison pour 100 000, nous pouvons constater que les Etats-Unis ont le plus haut nombre de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.</font></p>", unsafe_allow_html=True)
 
 
 
@@ -174,7 +176,7 @@ below_path = 'Dataset/education_below-upper-secondary_25-64.csv'
 below_datatset = pd.read_csv(below_path, sep = ',')
 pd_below = below_datatset[below_datatset['LOCATION'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
 
-tertiary_chart = px.line(pd_tertiary, x="TIME", y="Value", color="LOCATION", title="Taux de diplômés d'étude supérieur", markers=True,
+tertiary_chart = px.line(pd_tertiary, x="TIME", y="Value", color="LOCATION", title="Taux de diplômés d'étude supérieure", markers=True,
                          category_orders={"LOCATION": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
                             "TIME" : "Année",
@@ -182,7 +184,7 @@ tertiary_chart = px.line(pd_tertiary, x="TIME", y="Value", color="LOCATION", tit
                             "LOCATION" : "Pays"
                          },
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
-below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Taux de diplômés inférieur au niveau bac", markers=True,
+below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Taux de diplômés inférieurs au niveau bac", markers=True,
                          category_orders={"LOCATION": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
                             "TIME" : "Année",
@@ -192,16 +194,16 @@ below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Ta
                          color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 
 # Display charts with education dataset
-title_education_chart = st.header("Evolution du taux de diplômés d'étude supérieur VS inférieur au niveau bac parmi la population 25-64 ans")
+title_education_chart = st.header("Evolution du taux de diplômés d'étude supérieure VS inférieure au niveau bac parmi la population 25-64 ans")
 
 col_education_1, col_education_2 = st.columns(2)
 
 with col_education_1:
    st.plotly_chart(tertiary_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant l’évolution du taux de diplômé d’études supérieures nous pouvons voir que tous les pays sont en hausse mais particulièrement les Etats-Unis, l’Australie et la Suèdes. </font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant l'évolution du taux de diplômés d'étude supérieure, nous pouvons voir que tous les pays sont en hausse mais les Etats-Unis, l'Australie et la Suède se démarquent fortement par leur taux de diplômés en étude supérieure.</font></p>", unsafe_allow_html=True)
 with col_education_2:
    st.plotly_chart(below_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans le graphique représentant la population qui n’ont pas un niveau équivalent au bac sont en baisse générale ce qui est une bonne chose pour tous les pays. </font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Le graphique représentant le taux de la population n'ayant pas un niveau équivalent au baccalauréat est en baisse générale ce qui est une bonne chose pour tous les pays.</font></p>", unsafe_allow_html=True)
 
 
 
@@ -224,7 +226,7 @@ happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantri
 # Display charts with happiness dataset
 title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
 plot_happiness_chart =st.plotly_chart(happiness_chart, use_container_width=True)
-st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique de bonheur des habitants nous pouvons voir que les habitants d’inde et d’Afrique du Sud ne sont pas très heureux ce qui n’est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou de criminalité.<br><br></font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant le bonheur et la satisfaction à l'égard de la vie autodéclarée par les habitants, nous pouvons voir que les habitants d'Inde et d'Afrique du Sud ne sont pas très heureux ce qui n'est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou le nombre de crime.<br><br></font></p>", unsafe_allow_html=True)
 
 
 
