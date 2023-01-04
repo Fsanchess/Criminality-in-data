@@ -196,8 +196,11 @@ col_education_1, col_education_2 = st.columns(2)
 
 with col_education_1:
    st.plotly_chart(tertiary_chart, use_container_width=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant l’évolution du taux de diplômé d’études supérieure nous pouvons voir que les Etats-Unis, l’Australie et la Suèdes sont en hausse. </font></p>", unsafe_allow_html=True)
 with col_education_2:
    st.plotly_chart(below_chart, use_container_width=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans le graphique représentant la population qui n’ont pas un niveau équivalent au bac sont en baisse générale ce qui est une bonne chose. </font></p>", unsafe_allow_html=True)
+
 
 
 
