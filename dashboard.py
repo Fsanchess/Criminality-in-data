@@ -61,6 +61,9 @@ title_choropleth_map = st.header("Map avec nombre de victimes d'homicide volonta
 plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
 
 
+# Definition 'Number of victims of intentional homicide'
+st.markdown("<p style= color: dark grey><font size='4'>L'indicateur est défini comme le nombre total de victimes d'homicide intentionnel divisé par la population totale, exprimé pour 100 000 habitants.<br>L'homicide intentionnel est défini comme la mort illégale infligée à une personne avec l'intention de causer la mort ou des blessures graves (Source : Classification internationale des crimes à des fins statistiques, CIEC 2015).<br>La population fait référence à la population résidente totale dans un pays donné au cours d'une année donnée.<br><br></font></p>", unsafe_allow_html=True)
+
 
 # Chart with homicide dataset
 criminalite = px.scatter(pd1_homicide, x="Country", y="VALUE",marginal_x= False, marginal_y="violin",
@@ -76,8 +79,12 @@ title_unemployment_chart = st.header("Nombre de victimes d'homicide volontaire p
 plot_unemployment_chart =st.plotly_chart(criminalite, use_container_width=True)
 
 
+st.markdown("<p style= color: dark grey><font size='4'><br><br>Les nombres d'homicides volontaires pour 100 000 habitants varient considérablement d'un pays à l'autre. Bien qu'il y ait rarement une raison claire pour laquelle des crimes sont commis, de nombreux facteurs peuvent affecter les taux de criminalité.</font></p>", unsafe_allow_html=True)
 
-st.markdown("<p style= color: dark grey><font size='4'><br><br>Pour la suite de l'analyse, 6 pays avec des caractéristiques différents ont été choisis (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'>Les pays ayant des taux de criminalité élevés ont généralement des niveaux de pauvreté élevés et une faible disponibilité d'emplois, des conditions susceptibles de forcer les gens à adopter des solutions plus risquées, plus désespérées et moralement discutables (qui sont souvent rendues possibles par des organismes d'application de la loi sous-développés). Les taux de criminalité ont tendance à être plus faibles dans les pays où les conditions de vie sont favorables (riches), l'application de la loi par la police et des peines sévères pour les crimes.</font></p>", unsafe_allow_html=True)
+
+
+st.markdown("<p style= color: dark grey><font size='4'><br>Ces taux de criminalité seront comparés avec divers paramètres sociaux et 6 pays avec des caractéristiques différents ont été choisis pour la suite de l'analyse (développés/non développés, nord/sud, de tous les continents) : Australia (AUS), Brazil (BRA), India (IND), Sweden (SWE), United States of America (USA), South Africa (ZAF).<br></font></p>", unsafe_allow_html=True)
 
 
 
@@ -85,7 +92,7 @@ st.markdown("<p style= color: dark grey><font size='4'><br><br>Pour la suite de 
 pd2_homicide = homicide_dataset[homicide_dataset['Iso3_code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF'])]
 pd2_homicide = pd2_homicide.loc[pd2_homicide['Unit of measurement'] == 'Rate per 100,000 population']
 pd2_homicide = pd2_homicide[pd2_homicide['Year'].isin([2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020])]
-homicide_chart = px.line(pd2_homicide, x="Year", y="VALUE", color="Iso3_code", markers=True,
+homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
                          title = 'Crime par pays',
                          category_orders={"Iso3_code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
@@ -95,8 +102,28 @@ homicide_chart = px.line(pd2_homicide, x="Year", y="VALUE", color="Iso3_code", m
                          })
 
 # Display chart with homicide dataset
-#title_homicide_chart = st.header('Evolution du taux de criminalité')
-#plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
+title_homicide_chart = st.header('Evolution du taux de criminalité')
+plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
+
+
+
+# Charts with unemployment dataset
+unemployment_path = 'dataset_clean/unemployment_clean.csv'
+unemployment_dataset = pd.read_csv(unemployment_path, sep = ';')
+pd_unemployment = unemployment_dataset[unemployment_dataset['Country Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
+unemployment_chart = px.line(pd_unemployment, x="Year", y="Value", color="Country Code", markers=True,
+                         title = 'Chômage par pays',
+                         category_orders={"Country Code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
+                         labels={
+                            "Year" : "Année",
+                            "Value" : "Taux de chômage",
+                            "Country Code" : "Pays"
+                         })
+
+# Display charts with unemployment dataset
+#title_unemployment_chart = st.header("Evolution du taux de chômage")
+#plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
+
 
 
 # Charts with prison dataset
@@ -121,8 +148,8 @@ prison_chart = px.line(pd_prison, x="Year", y="VALUE", color="Iso3_code", marker
 col1, col2 = st.columns(2)
 
 with col1:
-   st.header('Evolution du nombre de crimes')
-   st.plotly_chart(homicide_chart, use_container_width=True)
+   st.header("Evolution du taux de chômage")
+   st.plotly_chart(unemployment_chart, use_container_width=True)
 with col2:
    st.header("Evolution du nombre de prisonniers")
    st.plotly_chart(prison_chart, use_container_width=True)
@@ -164,57 +191,33 @@ with col_education_2:
 
 
 
-# Charts with unemployment dataset
-unemployment_path = 'dataset_clean/unemployment_clean.csv'
-unemployment_dataset = pd.read_csv(unemployment_path, sep = ';')
-pd_unemployment = unemployment_dataset[unemployment_dataset['Country Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
-Year=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
-unemployment_chart = px.bar(pd_unemployment,
-             x=Year,
-             y=[pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'AUS'],
-                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'BRA'],
-                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'IND'],
-                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'SWE'],
-                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'USA'],
-                pd_unemployment['Value'].loc[pd_unemployment['Country Code'] == 'ZAF']],
-             title="Evolution du taux de chômage",
-             labels={"variable": "Pays"},
-             )
+# Charts with happiness dataset
+happiness_path = 'dataset_clean/happiness-cantril-ladder.csv'
+happiness_dataset = pd.read_csv(happiness_path, sep = ',')
+pd_happiness = happiness_dataset[happiness_dataset['Code'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
 
-# Change the bar mode
-newnames = {'wide_variable_0':'AUS',
-            'wide_variable_1': 'BRA',
-           'wide_variable_2': 'IND',
-           'wide_variable_3': 'SWE',
-           'wide_variable_4': 'USA',
-           'wide_variable_5': 'ZAF'}
-unemployment_chart.for_each_trace(lambda t: t.update(name = newnames[t.name],
-                                      legendgroup = newnames[t.name],
-                                      hovertemplate = t.hovertemplate.replace(t.name, newnames[t.name])
-                                     )
-                  )
-unemployment_chart.update_layout(
-    yaxis=dict(
-        title_text="Taux de chômages",
-        titlefont=dict(size=15)),
-    xaxis=dict(
-        title_text="Année",
-        titlefont=dict(size=15))
-)
+happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantril Ladder (World Happiness Report 2022)", color="Code", markers=True,
+                         title = 'Bonheur et satisfaction',
+                         category_orders={"Code": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
+                         labels={
+                            "Year" : "Année",
+                            "Life satisfaction in Cantril Ladder (World Happiness Report 2022)" : "Score de bonheur",
+                            "Code" : "Pays"
+                         })
 
-# Display charts with unemployment dataset
-title_unemployment_chart = st.header("Evolution du taux de chômage")
-plot_unemployment_chart =st.plotly_chart(unemployment_chart, use_container_width=True)
+# Display charts with happiness dataset
+title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
+plot_happiness_chart =st.plotly_chart(happiness_chart, use_container_width=True)
 
 
-#------------------ remplissage prison 
-df_prison = pd.read_excel('dataset_clean/data_cts_prisons_and_prisoners.xlsx')
-df_prison = df_prison[(df_prison.Iso3_code == "AUS") | (df_prison.Iso3_code == "BRA") | (df_prison.Iso3_code == "IND") | (df_prison.Iso3_code == "USA") | (df_prison.Iso3_code == "ZAF") | (df_prison.Iso3_code == "SWE")]
 
-df_prison = df_prison[(df_prison.Unit == "Rate per 100,000 population")]
-df_prison = df_prison[(df_prison.Dimension == "Total")]
-df_prison = df_prison[(df_prison.Category == "Total")]
-df_prison = df_prison[(df_prison.Indicator == "Persons held")]
+# Sources
+st.markdown("<p style= color: dark grey><font size='5'>Sources</font></p>", unsafe_allow_html=True)
+st.write("1. [Nombre de victimes d'homicide volontaire](https://dataunodc.un.org/dp-intentional-homicide-victims)")
+st.write("2. [Nombre de personnes détenues](https://dataunodc.un.org/dp-prisons-persons-held)")
+st.write("3. [Niveau d'éducation des adultes](https://data.oecd.org/eduatt/adult-education-level.htm#:~:text=There%20are%20three%20levels%3A%20below,and%20with%20more%20specialised%20teachers)")
+st.write("4. [Chômage, total (% de la population active totale)](https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS)")
+st.write("5. [Bonheur et satisfaction](https://worldhappiness.report/ed/2022/#appendices-and-data)")
 
-fig_prison = px.line(df_prison, x="Year", y="VALUE", color='Country')
-fig_prison.show()
+
+
