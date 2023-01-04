@@ -25,7 +25,7 @@ world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
 homicide_datapath = 'dataset_clean/homicide_clean.csv'
 homicide_dataset = pd.read_csv(homicide_datapath)
 pd1_homicide = homicide_dataset.loc[homicide_dataset['Unit of measurement'] == 'Rate per 100,000 population']
-#pd1_homicide = pd1_homicide.loc[pd1_homicide['Year'] == 2010]
+pd1_homicide = pd1_homicide.loc[pd1_homicide['Year'] == 2010]
 
 plotting_choropleth_map = world.merge(pd1_homicide, left_on = 'iso_a3', right_on = 'Iso3_code')
 
@@ -33,8 +33,7 @@ choropleth_map = px.choropleth(plotting_choropleth_map,
                                locations="iso_a3",
                                color="VALUE",
                                hover_name="Country",
-                               color_continuous_scale="YlOrRd",
-                               animation_frame="Year", animation_group="Country")
+                               color_continuous_scale="YlOrRd")
 
 choropleth_map.update_layout(
     title = 'Criminalité par pays (pour 100 000 habitants)',
@@ -55,15 +54,11 @@ choropleth_map.update_layout(
     )]
 )
 
-
-choropleth_map["layout"].pop("updatemenus") # optional, drop animation buttons
-
-
 plt.figure(figsize=(7,3))
 
 # Display choropleth map
 title_choropleth_map = st.header("Map avec nombre de victimes d'homicide volontaire par pays en 2010")
-st.plotly_chart(choropleth_map, use_container_width=True)
+plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
 
 
 # Definition 'Number of victims of intentional homicide'
@@ -78,10 +73,7 @@ criminalite = px.scatter(pd1_homicide, x="Country", y="VALUE",marginal_x= False,
                   title = 'Criminalité par pays (pour 100 000 habitants)',
                   color_continuous_scale=["lightyellow", "orange", "red"],
                   height=550,
-                  animation_frame="Year", animation_group="Country"
                  )
-
-criminalite["layout"].pop("updatemenus") # optional, drop animation buttons
 
 # Display charts with unemployment dataset
 title_unemployment_chart = st.header("Nombre de victimes d'homicide volontaire par pays en 2010")
