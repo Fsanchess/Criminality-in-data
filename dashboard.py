@@ -222,7 +222,7 @@ happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantri
 # Display charts with happiness dataset
 title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
 plot_happiness_chart =st.plotly_chart(happiness_chart, use_container_width=True)
-st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique de bonheur des habitants nous pouvons voir que les habitants d’inde et d’Afrique du Sud ne sont pas très heureux ce qui n’est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou de criminalité.</font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique de bonheur des habitants nous pouvons voir que les habitants d’inde et d’Afrique du Sud ne sont pas très heureux ce qui n’est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou de criminalité.<br><br></font></p>", unsafe_allow_html=True)
 
 
 
