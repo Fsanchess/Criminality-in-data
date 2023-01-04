@@ -102,6 +102,7 @@ homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
                             "Iso3_code" : "Pays"
                          },
                          height=550,
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"]
                          )
 
 # Display chart with homicide dataset
