@@ -1,3 +1,0 @@
-# packages in environment at C:\Users\flore\miniconda3\envs\Criminality-in-Data:
-#
-# Name                    Version                   Build  Channel
