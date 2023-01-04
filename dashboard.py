@@ -156,11 +156,11 @@ col1, col2 = st.columns(2)
 with col1:
    st.header("Evolution du taux de chômage")
    st.plotly_chart(unemployment_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le taux de chômage par pays, cela permet de constater que l’Afrique du Sud a un fort taux de chômages et que le taux de chômage a fortement augmenter au Brésil depuis 2015</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le taux de chômage par pays, cela permet de constater que l’Afrique du Sud a un fort taux de chômage et que le taux de chômage a fortement augmenter au Brésil depuis 2015</font></p>", unsafe_allow_html=True)
 with col2:
    st.header("Evolution du nombre de prisonniers")
    st.plotly_chart(prison_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le nombre d’habitant en prison pour 100.000, cela permet de constater que les états unis ont le plus haut taux de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le nombre d’habitants en prison pour 100.000, nous pouvons constater que les états-unis ont le plus haut taux de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.</font></p>", unsafe_allow_html=True)
 
 
 
@@ -196,10 +196,10 @@ col_education_1, col_education_2 = st.columns(2)
 
 with col_education_1:
    st.plotly_chart(tertiary_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant l’évolution du taux de diplômé d’études supérieure nous pouvons voir que les Etats-Unis, l’Australie et la Suèdes sont en hausse. </font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant l’évolution du taux de diplômé d’études supérieures nous pouvons voir que tous les pays sont en hausse mais particulièrement les Etats-Unis, l’Australie et la Suèdes. </font></p>", unsafe_allow_html=True)
 with col_education_2:
    st.plotly_chart(below_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans le graphique représentant la population qui n’ont pas un niveau équivalent au bac sont en baisse générale ce qui est une bonne chose. </font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans le graphique représentant la population qui n’ont pas un niveau équivalent au bac sont en baisse générale ce qui est une bonne chose pour tous les pays. </font></p>", unsafe_allow_html=True)
 
 
 
@@ -222,6 +222,7 @@ happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantri
 # Display charts with happiness dataset
 title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
 plot_happiness_chart =st.plotly_chart(happiness_chart, use_container_width=True)
+st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique de bonheur des habitants nous pouvons voir que les habitants d’inde et d’Afrique du Sud ne sont pas très heureux ce qui n’est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou de criminalité.</font></p>", unsafe_allow_html=True)
 
 
 
