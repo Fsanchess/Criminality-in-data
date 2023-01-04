@@ -71,7 +71,8 @@ criminalite = px.scatter(pd1_homicide, x="Country", y="VALUE",marginal_x= False,
                      "VALUE": "Nb crimes pour 100 000 habitants",
                      "Country": "Pays"},
                   title = 'Criminalité par pays (pour 100 000 habitants)',
-                  color_continuous_scale=["lightyellow", "orange", "red"]
+                  color_continuous_scale=["lightyellow", "orange", "red"],
+                  height=550,
                  )
 
 # Display charts with unemployment dataset
@@ -101,7 +102,6 @@ homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
                             "Iso3_code" : "Pays"
                          },
                          height=550,
-                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"]
                          )
 
 # Display chart with homicide dataset
