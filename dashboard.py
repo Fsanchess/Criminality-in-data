@@ -214,10 +214,10 @@ with col2:
 
 
 # Charts with education dataset
-tertiary_path = 'Dataset/education_tertiary_25-64.csv'
+tertiary_path = 'dataset_clean/education_tertiary_25-64.csv'
 tertiary_dataset = pd.read_csv(tertiary_path, sep = ',')
 pd_tertiary = tertiary_dataset[tertiary_dataset['LOCATION'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
-below_path = 'Dataset/education_below-upper-secondary_25-64.csv'
+below_path = 'dataset_clean/education_below-upper-secondary_25-64.csv'
 below_datatset = pd.read_csv(below_path, sep = ',')
 pd_below = below_datatset[below_datatset['LOCATION'].isin(['AUS', 'BRA', 'IND', 'SWE', 'USA', 'ZAF']) ]
 
