@@ -101,6 +101,7 @@ homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
                             "Iso3_code" : "Pays"
                          },
                          height=550,
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"]
                          )
 
 # Display chart with homicide dataset
@@ -120,7 +121,8 @@ unemployment_chart = px.line(pd_unemployment, x="Year", y="Value", color="Countr
                             "Year" : "Année",
                             "Value" : "Taux de chômage",
                             "Country Code" : "Pays"
-                         })
+                         },
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 
 # Display charts with unemployment dataset
 #title_unemployment_chart = st.header("Evolution du taux de chômage")
@@ -140,7 +142,8 @@ prison_chart = px.line(pd_prison, x="Year", y="VALUE", color="Iso3_code", marker
                             "Year" : "Année",
                             "VALUE" : "Nb prisonniers pour 100 000 habitants",
                             "Iso3_code" : "Pays"
-                         })
+                         },
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 
 # Display charts with prison dataset
 #title_prison_chart = st.header("Evolution du nombre de prisonniers (pour 100 000 habitants)")
@@ -172,14 +175,16 @@ tertiary_chart = px.line(pd_tertiary, x="TIME", y="Value", color="LOCATION", tit
                             "TIME" : "Année",
                             "Value" : "Taux de diplômés",
                             "LOCATION" : "Pays"
-                         })
+                         },
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 below_chart = px.line(pd_below, x="TIME", y="Value", color="LOCATION", title="Taux de diplômés inférieur au niveau bac", markers=True,
                          category_orders={"LOCATION": ["AUS", "BRA", "IND", "SWE","USA","ZAF"]},
                          labels={
                             "TIME" : "Année",
                             "Value" : "Taux de diplômés",
                             "LOCATION" : "Pays"
-                         })
+                         },
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 
 # Display charts with education dataset
 title_education_chart = st.header("Evolution du taux de diplômés d'étude supérieur VS inférieur au niveau bac parmi la population 25-64 ans")
@@ -205,7 +210,8 @@ happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantri
                             "Year" : "Année",
                             "Life satisfaction in Cantril Ladder (World Happiness Report 2022)" : "Score de bonheur",
                             "Code" : "Pays"
-                         })
+                         },
+                         color_discrete_sequence=["blue", "red", "green", "magenta", "goldenrod","deepskyblue"])
 
 # Display charts with happiness dataset
 title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
