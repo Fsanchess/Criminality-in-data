@@ -155,9 +155,11 @@ col1, col2 = st.columns(2)
 with col1:
    st.header("Evolution du taux de chômage")
    st.plotly_chart(unemployment_chart, use_container_width=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le taux de chômage par pays, cela permet de constater que l’Afrique du Sud a un fort taux de chômages et que le taux de chômage a fortement augmenter au Brésil depuis 2015</font></p>", unsafe_allow_html=True)
 with col2:
    st.header("Evolution du nombre de prisonniers")
    st.plotly_chart(prison_chart, use_container_width=True)
+   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le nombre d’habitant en prison pour 100.000, cela permet de constater que les états unis ont le plus haut taux de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.</font></p>", unsafe_allow_html=True)
 
 
 
