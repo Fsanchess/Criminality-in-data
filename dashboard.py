@@ -84,7 +84,7 @@ st.markdown("<p style= color: dark grey><font size='4'><br><br>Les nombres d'hom
 st.markdown("<p style= color: dark grey><font size='4'>Les pays ayant des taux de criminalité élevés ont généralement des niveaux de pauvreté élevés et une faible disponibilité d'emplois, des conditions susceptibles de forcer les gens à adopter des solutions plus risquées, plus désespérées et moralement discutables (qui sont souvent rendues possibles par des organismes d'application de la loi sous-développés). Les taux de criminalité ont tendance à être plus faibles dans les pays où les conditions de vie sont favorables (riches), l'application de la loi par la police et des peines sévères pour les crimes.</font></p>", unsafe_allow_html=True)
 
 
-st.markdown("<p style= color: dark grey><font size='4'><br>Ces taux de criminalité seront comparés avec divers paramètres sociaux et 6 pays avec des caractéristiques différents ont été choisis pour la suite de l'analyse (développés/non développés, nord/sud, de tous les continents) :<br><ul><li>Australia (AUS)</li><li>Brazil (BRA)</li><li>India (IND)</li><li>Sweden (SWE)</li><li>United States of America (USA)</li><li>South Africa (ZAF)</li></ul><br></font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'><br>Ces taux de criminalité seront comparés avec divers paramètres sociaux et 6 pays avec des caractéristiques différents ont été choisis pour la suite de l'analyse (développés/non développés, nord/sud, de tous les continents) : Australia (AUS), Brazil (BRA), India (IND), Sweden (SWE), United States of America (USA), South Africa (ZAF).<br></font></p>", unsafe_allow_html=True)
 
 
 
