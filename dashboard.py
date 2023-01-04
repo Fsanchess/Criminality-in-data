@@ -81,13 +81,13 @@ plot_unemployment_chart =st.plotly_chart(criminalite, use_container_width=True)
 
 
 
-st.markdown("<p style= color: dark grey><font size='4'><br><br>Le Honduras est le pays dans lequel il y a eu le plus de crimes en 2010, soit 75 homicides volontaires pour 100 000 habitants. Tandis que l'Andorre et Saint-Marin sont les états dans lesquels il n'y a pas eu d'homicide volontaire en 2010.</font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'><br>Le Honduras est le pays dans lequel il y a eu le plus de crimes en 2010, soit 75 homicides volontaires pour 100 000 habitants. Tandis que l'Andorre et Saint-Marin sont les états dans lesquels il n'y a pas eu d'homicide volontaire en 2010.</font></p>", unsafe_allow_html=True)
 
 st.markdown("<p style= color: dark grey><font size='4'><br><br>Les nombres d'homicides volontaires pour 100 000 habitants varient considérablement d'un pays à l'autre. Bien qu'il y ait rarement une raison claire pour laquelle des crimes sont commis, de nombreux facteurs peuvent affecter les taux de criminalité.</font></p>", unsafe_allow_html=True)
 
 st.markdown("<p style= color: dark grey><font size='4'>Les pays ayant des taux de criminalité élevés ont généralement des niveaux de pauvreté élevés et une faible disponibilité d'emplois, des conditions susceptibles de forcer les gens à adopter des solutions plus risquées, plus désespérées et moralement discutables (qui sont souvent rendues possibles par des organismes d'application de la loi sous-développés). Les taux de criminalité ont tendance à être plus faibles dans les pays où les conditions de vie sont favorables (riches), l'application de la loi par la police et des peines plus sévères pour les crimes.</font></p>", unsafe_allow_html=True)
 
-st.markdown("<p style= color: dark grey><font size='4'><br>Ces taux de criminalité seront comparés avec divers paramètres sociaux et 6 pays avec des caractéristiques différents ont été choisis pour la suite de l'analyse (développés/non développés, nord/sud, de tous les continents) : Australia (AUS), Brazil (BRA), India (IND), Sweden (SWE), United States of America (USA), South Africa (ZAF).<br></font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'><br>Ces taux de criminalité seront comparés avec divers paramètres sociaux et 6 pays avec des caractéristiques différents ont été choisis pour la suite de l'analyse (développés/non développés, nord/sud, de tous les continents) : Australia (AUS), Brazil (BRA), India (IND), Sweden (SWE), United States of America (USA), South Africa (ZAF).<br><br></font></p>", unsafe_allow_html=True)
 
 
 
@@ -111,7 +111,7 @@ homicide_chart = px.bar(pd2_homicide, x="Year", y="VALUE", color="Iso3_code",
 title_homicide_chart = st.header("Evolution du nombre de victimes d'homicide volontaire")
 plot_homicide_chart =st.plotly_chart(homicide_chart, use_container_width=True)
 
-st.markdown("<p style= color: dark grey><font size='4'><br>Parmi les 6 pays choisis pour l'analyse, l'Afrique du Sud et le Brésil comptent le plus criminalité entre 2000 et 2020, avec une moyenne respective de 36.9 et 26.8 homicides volontaires pour 100 000 habitants. Suivis par les Etats-Unis, l'Inde, l'Australie et la Suède avec une moyenne respective de 5.3, 3.7, 1.2 et 1.02 homicides volontaires pour 100 000 habitants.</font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'>Parmi les 6 pays choisis pour l'analyse, l'Afrique du Sud et le Brésil comptent le plus criminalité entre 2000 et 2020, avec une moyenne respective de 36.9 et 26.8 homicides volontaires pour 100 000 habitants. Suivis par les Etats-Unis, l'Inde, l'Australie et la Suède avec une moyenne respective de 5.3, 3.7, 1.2 et 1.02 homicides volontaires pour 100 000 habitants.<br><br></font></p>", unsafe_allow_html=True)
 
 
 
@@ -160,11 +160,11 @@ col1, col2 = st.columns(2)
 with col1:
    st.header("Evolution du taux de chômage")
    st.plotly_chart(unemployment_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le taux de chômage par pays, cela permet de constater que l'Afrique du Sud a un fort taux de chômage (27,25% en moyenne) et que le taux de chômage a fortement augmenté au Brésil depuis 2015</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'>Ce graphique représente le taux de chômage par pays, cela permet de constater que l'Afrique du Sud a un fort taux de chômage (27,25% en moyenne) et que le taux de chômage a fortement augmenté au Brésil depuis 2015<br><br></font></p>", unsafe_allow_html=True)
 with col2:
    st.header("Evolution du nombre de prisonniers")
    st.plotly_chart(prison_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Ce graphique représente le nombre d'habitants en prison pour 100 000, nous pouvons constater que les Etats-Unis ont le plus haut nombre de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'>Ce graphique représente le nombre d'habitants en prison pour 100 000, nous pouvons constater que les Etats-Unis ont le plus haut nombre de personnes en prisons mais que ce chiffre est en baisse tandis que le Brésil est en hausse depuis quasiment 20 ans.<br><br></font></p>", unsafe_allow_html=True)
 
 
 
@@ -200,10 +200,10 @@ col_education_1, col_education_2 = st.columns(2)
 
 with col_education_1:
    st.plotly_chart(tertiary_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant l'évolution du taux de diplômés d'étude supérieure, nous pouvons voir que tous les pays sont en hausse mais les Etats-Unis, l'Australie et la Suède se démarquent fortement par leur taux de diplômés en étude supérieure.</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'>Dans ce graphique représentant l'évolution du taux de diplômés d'étude supérieure, nous pouvons voir que tous les pays sont en hausse mais les Etats-Unis, l'Australie et la Suède se démarquent fortement par leur taux de diplômés en étude supérieure.<br><br></font></p>", unsafe_allow_html=True)
 with col_education_2:
    st.plotly_chart(below_chart, use_container_width=True)
-   st.markdown("<p style= color: dark grey><font size='4'><br><br>Le graphique représentant le taux de la population n'ayant pas un niveau équivalent au baccalauréat est en baisse générale ce qui est une bonne chose pour tous les pays.</font></p>", unsafe_allow_html=True)
+   st.markdown("<p style= color: dark grey><font size='4'>Le graphique représentant le taux de la population n'ayant pas un niveau équivalent au baccalauréat est en baisse générale ce qui est une bonne chose pour tous les pays.<br><br></font></p>", unsafe_allow_html=True)
 
 
 
@@ -226,7 +226,7 @@ happiness_chart = px.line(pd_happiness, x="Year", y="Life satisfaction in Cantri
 # Display charts with happiness dataset
 title_happiness_chart = st.header("Score de bonheur et satisfaction de vie, de 0 à 10")
 plot_happiness_chart =st.plotly_chart(happiness_chart, use_container_width=True)
-st.markdown("<p style= color: dark grey><font size='4'><br><br>Dans ce graphique représentant le bonheur et la satisfaction à l'égard de la vie autodéclarée par les habitants, nous pouvons voir que les habitants d'Inde et d'Afrique du Sud ne sont pas très heureux ce qui n'est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou le nombre de crime.<br><br></font></p>", unsafe_allow_html=True)
+st.markdown("<p style= color: dark grey><font size='4'>Dans ce graphique représentant le bonheur et la satisfaction à l'égard de la vie autodéclarée par les habitants, nous pouvons voir que les habitants d'Inde et d'Afrique du Sud ne sont pas très heureux ce qui n'est pas forcement en accord avec les différents indicateurs tels que le taux de chômage ou le nombre de crime.<br><br><br></font></p>", unsafe_allow_html=True)
 
 
 
