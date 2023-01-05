@@ -6,7 +6,7 @@
 * [Setup](#setup)
 
 ## General info
-This project is a dashboard comparing crime with different social criteria in the world.
+This project is a dashboard comparing crime with different social criteria in the world. <br>
 To launch the dashboard use https://fsanchess-criminality-in-data-dashboard-9j2p7c.streamlit.app/	
 ## Technologies
 Project is created with:
