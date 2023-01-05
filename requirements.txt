@@ -1,4 +1,4 @@
-geopandas  0.12.1
+geopandas==0.12.1
 mapclassify
 matplotlib
 numpy
