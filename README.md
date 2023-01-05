@@ -7,7 +7,7 @@
 
 ## General info
 This project is a dashboard comparing crime with different social criteria in the world.
-	
+To launch the dashboard use https://fsanchess-criminality-in-data-dashboard-9j2p7c.streamlit.app/	
 ## Technologies
 Project is created with:
 * Python
