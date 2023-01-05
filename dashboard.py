@@ -26,7 +26,7 @@ world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
 homicide_datapath = 'dataset_clean/homicide_clean.csv'
 homicide_dataset = pd.read_csv(homicide_datapath)
 pd1_homicide = homicide_dataset.loc[homicide_dataset['Unit of measurement'] == 'Rate per 100,000 population']
-pd1_homicide = pd1_homicide.loc[pd1_homicide['Year'] == 2010]
+pd2_homicide = pd1_homicide.loc[pd1_homicide['Year'] == 2010]
 
 plotting_choropleth_map = world.merge(pd1_homicide, left_on = 'iso_a3', right_on = 'Iso3_code')
 
@@ -34,7 +34,8 @@ choropleth_map = px.choropleth(plotting_choropleth_map,
                                locations="iso_a3",
                                color="VALUE",
                                hover_name="Country",
-                               color_continuous_scale="YlOrRd")
+                               color_continuous_scale="YlOrRd",
+                               animation_frame="Year", animation_group="Country")
 
 choropleth_map.update_layout(
     title = 'Criminalité par pays (pour 100 000 habitants)',
@@ -57,6 +58,10 @@ choropleth_map.update_layout(
 
 plt.figure(figsize=(7,3))
 
+sliders = [dict(active=7)]
+
+choropleth_map.update_layout(sliders=sliders)
+
 # Display choropleth map
 title_choropleth_map = st.header("Map avec nombre de victimes d'homicide volontaire par pays en 2010")
 plot_choropleth_map = st.plotly_chart(choropleth_map, use_container_width=True)
@@ -67,7 +72,7 @@ st.markdown("<p style= color: dark grey><font size='4'>L'indicateur est défini 
 
 
 # Chart with homicide dataset
-criminalite = px.scatter(pd1_homicide, x="Country", y="VALUE",marginal_x= False, marginal_y="violin",
+criminalite = px.scatter(pd2_homicide, x="Country", y="VALUE",marginal_x= False, marginal_y="violin",
                   labels={
                      "VALUE": "Nb crimes pour 100 000 habitants",
                      "Country": "Pays"},
